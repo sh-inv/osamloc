@@ -1,6 +1,6 @@
 # Osamloc Project
 
-- 국내 대표 차(Tea) 브랜드 '[오설록](https://www.osulloc.com/kr/ko)'을 모티브로 한 프로젝트입니다.
+- 국내 대표 차(Tea) 브랜드 [오설록](https://www.osulloc.com/kr/ko)을 모티브로 한 프로젝트입니다.
 - 사이트 선정 이유
   -  처음 프로젝트인 만큼 그동안 배운 지식을 활용하여 e-커머스에 CRUD 기반으로 직접 기능들을 구현해보고 적용해볼 수 있는 사이트를 선정
 
