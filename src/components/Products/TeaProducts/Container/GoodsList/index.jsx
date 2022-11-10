@@ -7,31 +7,37 @@ import "./index.scss";
 import axios from "axios";
 
 function GoodsList(props) {
-  
-  const { goodsList, secondCategory, setSecondCategory, pageNum, setPageNum, pageInfo } = props;
-  
+  const {
+    goodsList,
+    secondCategory,
+    setSecondCategory,
+    pageNum,
+    setPageNum,
+    pageInfo,
+  } = props;
+
   // 전체 버튼 상태
   const [total, setTotal] = useState(true);
   // 카테고리 이름과 버튼 상태
   const [category, setCategory] = useState([
     {
       name: "잎차",
-      query: 'tealeaf',
+      query: "tealeaf",
       view: false,
     },
     {
       name: "피라미드",
-      query: 'pyramid',
+      query: "pyramid",
       view: false,
     },
     {
       name: "티백",
-      query: 'teabag',
+      query: "teabag",
       view: false,
     },
     {
       name: "파우더",
-      query: 'powder',
+      query: "powder",
       view: false,
     },
   ]);
@@ -50,10 +56,9 @@ function GoodsList(props) {
         secondCategory = [];
       }
     }
-
     // 누른 버튼 이름을 배열에 넣기
     let arr = [];
-    for(let i in category){
+    for (let i in category) {
       if (category[i].view) {
         arr.push(category[i].query);
         secondCategory = arr;
@@ -64,23 +69,18 @@ function GoodsList(props) {
   }, [category]);
 
   useEffect(() => {
+    let url;
     if (total) {
-      axios
-        .get(`http://localhost:10010/products/category?name=${pageInfo.query}`)
-        .then((res) => {
-          setGoodsLength(res.data.data.length);
-        });
+      url = `http://localhost:10010/products/category?name=${pageInfo.query}`;
     } else {
-      axios
-        .get(`http://localhost:10010/products/category/type?name=${pageInfo.query}&type=${secondCategory}`)
-        .then((res) => {
-          setGoodsLength(res.data.data.length);
-        });
+      url = `http://localhost:10010/products/category/type?name=${pageInfo.query}&type=${secondCategory}`;
     }
+    axios.get(url).then((res) => {
+      setGoodsLength(res.data.data.length);
+    });
   }, [secondCategory]);
 
-  // pagination에필요한 state
-  const [limit, setLimit] = useState(9);
+  const limit = 9;
   const offset = (pageNum - 1) * limit;
 
   return (
@@ -133,9 +133,9 @@ function GoodsList(props) {
         </div>
       </div>
       <div className="goods-list">
-        {goodsList.map(goods => 
+        {goodsList.map((goods) => (
           <Goods key={goods.name} goods={goods} />
-        )}
+        ))}
       </div>
 
       <Pagination
