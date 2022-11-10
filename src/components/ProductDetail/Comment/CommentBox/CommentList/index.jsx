@@ -12,7 +12,7 @@ function CommentList(props) {
   const [commentList, setCommentList] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [reviewLength, setReviewLength] = useState(1);
-  const limit = 4;
+  const limit = 7;
   const offset = (pageNum - 1) * limit;
 
   useEffect(()=>{

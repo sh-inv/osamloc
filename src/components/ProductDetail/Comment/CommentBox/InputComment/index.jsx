@@ -24,7 +24,6 @@ function InputComment() {
         }
       })
       inputValue.current.value = '';
-      console.log('실행');
       window.location.replace(`${location.pathname}`);
     }
   };
